@@ -1,1 +1,36 @@
-hello page
+
+Pass-by-value and pass-by-const-reference imply similar things - you want to be able to look at the value without being able to modify it.
+Any time you could use pass-by-value you could instead use pass-by-const-reference without affecting the correctness of the program. However, there are performance tradeoffs between the indirection of the reference and the cost of copying and destructing the parameter.
+Pass-by-non-const-reference should be used to indicate "I want to modify the argument."
+You cannot pass rvalues into functions that take their arguments by non-const reference.
+
+but in C++11, pass by value is recommended. 
+
+
+
+
+A short holds numbers too. As does a signed char.
+
+But none of those types are guaranteed to be large enough to represent the sizes of any strings.
+
+string::size_type guarantees just that. It is a type that is big enough to represent the size of a string, no matter how big that string is.
+
+When you add the const keyword to a method the this pointer will essentially become const, and you can therefore not change any member data.
+keyword:mutable
+ A mutable data member is never const, even when it is a member of a const object.
+ Accordingly, a const member function may change a mutable member.
+ e.g mutable size_t access_ctr;
+
+class MyClass{};
+the return of MyClass& will make it able to do myclass.funA().funB(); 
+
+A class can allow another class or function to access its nonpublic members by
+making that class or function a friend. A class makes a function its friend by including
+a declaration for that function preceded by the keyword friend:
+class Sales_data {
+    // friend declarations for nonmember Sales_data operations added
+    friend Sales_data add(const Sales_data&, const Sales_data&);
+    // Window_mgr members can access the private parts of class Screen
+    friend class Window_mgr;
+    // Window_mgr::clear must have been declared before class Screen
+    friend void Window_mgr::clear(ScreenIndex);
